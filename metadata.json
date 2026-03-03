@@ -1,0 +1,7 @@
+{
+  "name": "ALAN — Interview Instrument",
+  "description": "A constructed Artistic Intelligence designed to interview image-makers, exploring beauty, fashion, and the future of creativity.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

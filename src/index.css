@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=VT323&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-mono: "VT323", monospace;
+  --font-display: "VT323", monospace;
+
+  --color-alan-bg: #e5e5e5;
+  --color-alan-ink: #000000;
+  --color-alan-accent: #00ff00;
+  --color-alan-muted: #666666;
+  --color-alan-border: #000000;
+}
+
+@layer base {
+  body {
+    @apply bg-alan-bg text-alan-ink font-sans antialiased overflow-hidden;
+    background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    background-size: 100% 2px, 3px 100%;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display uppercase tracking-widest;
+  }
+}
+
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.scanline-bg {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(0, 0, 0, 0.1) 1px,
+    rgba(0, 0, 0, 0.1) 2px
+  );
+}
+
+.alan-logo {
+  font-family: 'VT323', monospace;
+  font-size: 120px;
+  line-height: 0.8;
+  position: relative;
+  color: #000;
+  text-shadow: 
+    2px 2px 0px #00ff00,
+    -2px -2px 0px #fff;
+}
+
+.block-button {
+  @apply bg-black text-white px-8 py-2 font-mono uppercase tracking-widest hover:bg-alan-accent hover:text-black transition-all border-2 border-black;
+}
+
+.terminal-border {
+  @apply border-t border-b border-black/20;
+}
+
+.markdown-body {
+  @apply font-sans leading-relaxed text-sm;
+}
+
+.markdown-body p {
+  @apply mb-2;
+}
+
+.markdown-body strong {
+  @apply font-bold;
+}
+
+
