@@ -91,12 +91,30 @@ export default function App() {
 
     try {
       const response = await alan.sendMessage(userMsg.text, messages, userMsg.image);
-      setMessages(prev => [...prev, {
-        role: 'model',
-        text: response.text,
-        image: response.image,
-        timestamp: Date.now()
-      }]);
+      
+      const textParts = response.text.split('\n').filter(p => p.trim() !== '');
+      
+      if (textParts.length === 0 && response.image) {
+        setMessages(prev => [...prev, {
+          role: 'model',
+          text: "I've projected a visual representation.",
+          image: response.image,
+          timestamp: Date.now()
+        }]);
+      } else {
+        for (let i = 0; i < textParts.length; i++) {
+          setMessages(prev => [...prev, {
+            role: 'model',
+            text: textParts[i],
+            image: i === 0 ? response.image : undefined,
+            timestamp: Date.now()
+          }]);
+          
+          if (i < textParts.length - 1) {
+            await new Promise(resolve => setTimeout(resolve, 500 + Math.random() * 500));
+          }
+        }
+      }
     } catch (error) {
       console.error(error);
       setMessages(prev => [...prev, {
